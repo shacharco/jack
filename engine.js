@@ -1,9 +1,23 @@
+/**
+ * Engine for creating games.
+ */
+
+/**
+ * adding game stated
+ * return the added state
+ * @param {*} mainElement to add to
+ * @param {*} stateDiv to add
+ */
 function addState(mainElement, stateDiv){
     stateDiv.classList.add("state");
     mainElement.appendChild(stateDiv);
     return stateDiv;
 }
 
+/**
+ * return the state by id
+ * @param {*} stateId 
+ */
 function getStateById(stateId){
     var mainDiv = document.getElementById("MainDiv");
     var states = mainDiv.getElementsByClassName("state");
@@ -16,6 +30,11 @@ function getStateById(stateId){
     return state;
 }
 
+/**
+ * changes the visibillity of a state
+ * @param {*} stateId 
+ * @param {*} visibillity 
+ */
 function changeStateVisibillity(stateId, visibillity){
     var state = getStateById(stateId);
     if(!state){
@@ -28,6 +47,12 @@ function changeStateVisibillity(stateId, visibillity){
         state.style.display = "none";        
     }
 }
+
+/**
+ * changes from state to state
+ * @param {*} fromState 
+ * @param {*} toState 
+ */
 function changeState(fromState, toState){
     changeStateVisibillity(fromState, false);
     changeStateVisibillity(toState, true);

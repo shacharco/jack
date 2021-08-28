@@ -1,5 +1,12 @@
+/**
+ * The game
+ */
+
 import {changeState, changeStateVisibillity, getStateById, addState} from './engine.js';
 
+/**
+ * returns the state that connects states
+ */
 function createStateBridge(){
     var stateDiv = document.createElement("div");
     stateDiv.id = "bridge";
@@ -8,6 +15,10 @@ function createStateBridge(){
     return stateDiv;
 }
 
+/**
+ * sets the bridge state text
+ * @param {*} text 
+ */
 function setBridge(text){
     var bridge = getStateById("bridge");
     var mainText = bridge.getElementsByTagName("p")[0];
@@ -15,7 +26,9 @@ function setBridge(text){
     changeStateVisibillity("bridge", true);
 }
 
-
+/**
+ * returns the main starting state
+ */
 function createStateStart(){
     var stateDiv = document.createElement("div");
     stateDiv.id = "start";
@@ -40,6 +53,9 @@ function createStateStart(){
     return stateDiv;
 }
 
+/**
+ * returns the state when moving forward
+ */
 function createStateForward(){
     var stateDiv = document.createElement("div");
     stateDiv.id = "forward";
@@ -56,6 +72,10 @@ function createStateForward(){
     stateDiv.appendChild(no);
     return stateDiv;
 }
+
+/**
+ * returns the state when moving left
+ */
 function createStateLeft(){
     var stateDiv = document.createElement("div");
     stateDiv.id = "left";
@@ -107,6 +127,9 @@ function createStateLeft(){
     return stateDiv;
 }
 
+/**
+ * returns the ending state
+ */
 function createStateEnd(){
     var stateDiv = document.createElement("div");
     stateDiv.id = "end";
@@ -116,6 +139,10 @@ function createStateEnd(){
     return stateDiv;
 }
 
+/**
+ * initializes the game states and info to the main div
+ * @param {*} mainDiv 
+ */
 function boot(mainDiv){
     window.player = {"money": 100, "apples": 0}        
     addState(mainDiv, createStateBridge());
@@ -130,6 +157,8 @@ function boot(mainDiv){
     changeStateVisibillity("end", false);
 }
 
-console.log("hi")
+/**
+ * start the game
+ */
 var mainDiv = document.getElementById("MainDiv");
 boot(mainDiv);
